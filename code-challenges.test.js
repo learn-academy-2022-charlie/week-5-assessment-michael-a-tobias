@@ -40,16 +40,14 @@ describe("leet", () => {
 // b) Create the function that makes the test pass.
 
 // this function is called "leet" and it takes a string as an argument
-// function leet(string) {
-
-// .replace(/a/gi, "4") looks for a global(g), case insensitive(i) character "a"
-//     it then replaces that character with "4". The other .replaces do similar functions 
-
-//     return string.replace(/a/gi, "4").replace(/e/gi, "3").replace(/i/gi, "1").replace(/o/gi, "0")
-// }
+function leet(string) {
+    // .replace(/a/gi, "4") looks for a global(g), case insensitive(i) character "a"
+    // it then replaces that character with "4". The other .replaces do similar functions 
+    return string.replace(/a/gi, "4").replace(/e/gi, "3").replace(/i/gi, "1").replace(/o/gi, "0")
+}
 
 // GREEN: Pass
-// Let's try to refactor the replace functions to look cleaner.
+// I tried to refactor it so I only have to use one .replace, but my research shows I can only do that using prototyping (which I am unfamiliar with) and it would actually complicate my code a lot more.
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns all the words that contain that particular letter.
 
