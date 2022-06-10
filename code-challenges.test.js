@@ -13,18 +13,43 @@
 
 // --------------------1) Create a function that takes in a string and returns a coded message. The coded message converts 'a' to 4, 'e' to 3, 'i' to 1, and 'o' to 0.
 
+// I will create a function
+// it will take a string as an argument
+// it will convert 'a' to 4, 'e' to 3, 'i' to 1, and 'o' to 0
+// it will return the argument with the characters converted
+
 // a) Create a test with expect statements using the variables provided.
 
-const secretCodeWord1 = "Lackadaisical"
-// Expected output: "L4ck4d41s1c4l"
-const secretCodeWord2 = "Gobbledygook"
-// Expected output: "G0bbl3dyg00k"
-const secretCodeWord3 = "Eccentric"
-// Expected output: "3cc3ntr1c"
+// this tests a function called "leet"
+describe("leet", () => {
+    it("it converts 'a' to 4, 'e' to 3, 'i' to 1, and 'o' to 0", () => {
+        // "leet" will take these variables ...
+        const secretCodeWord1 = "Lackadaisical"
+        const secretCodeWord2 = "Gobbledygook"
+        const secretCodeWord3 = "Eccentric"
+        // ... and return them with certain letters converted to numbers
+        expect(leet(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
+        expect(leet(secretCodeWord2)).toEqual("G0bbl3dyg00k")
+        expect(leet(secretCodeWord3)).toEqual("3cc3ntr1c")
+    })
+})
 
+// RED: ReferenceError: leet is not defined
+//      Test failed successfully.
 
 // b) Create the function that makes the test pass.
 
+// this function is called "leet" and it takes a string as an argument
+// function leet(string) {
+
+// .replace(/a/gi, "4") looks for a global(g), case insensitive(i) character "a"
+//     it then replaces that character with "4". The other .replaces do similar functions 
+
+//     return string.replace(/a/gi, "4").replace(/e/gi, "3").replace(/i/gi, "1").replace(/o/gi, "0")
+// }
+
+// GREEN: Pass
+// Let's try to refactor the replace functions to look cleaner.
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns all the words that contain that particular letter.
 
