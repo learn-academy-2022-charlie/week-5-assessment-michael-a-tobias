@@ -51,29 +51,109 @@ function leet(string) {
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns all the words that contain that particular letter.
 
+// I am going to create a function called "letterCheck"
+// It will take an array and a single character string as arguments
+// It will return an array of strings that contain the same character as the single character string
+
 // a) Create a test with expects statement using the variable provided.
 
-const arrayOfWords1 = ["Apple", "Banana", "Plum", "Orange", "Kiwi"]
-const letterA = "a"
-// Expected output: ["Apple", "Banana", "Orange"]
-const arrayOfWords2 = ["Mango", "Cherry", "Apricot", "Blueberry", "Peach"]
-const letterE = "e"
-// Expected output: ["Cherry", "Blueberry", "Peach"]
 
+// this tests a function called "leet"
+describe("letterCheck", () => {
+    it("takes in an array of words and a single letter and returns all the words that contain that particular letter", () => {
+        // the function takes an array of words ...
+        const arrayOfWords1 = ["Apple", "Banana", "Plum", "Orange", "Kiwi"]
+        // ... and a single letter ...
+        const letterA = "a"
+
+        const arrayOfWords2 = ["Mango", "Cherry", "Apricot", "Blueberry", "Peach"]
+        const letterE = "e"
+
+        // ... and returns all the words that contain that particular letter
+        expect(letterCheck(arrayOfWords1, letterA)).toEqual(["Apple", "Banana", "Orange"])
+        expect(letterCheck(arrayOfWords2, letterE)).toEqual(["Cherry", "Blueberry", "Peach"])
+    })
+})
+
+// RED: ReferenceError: letterCheck is not defined
+//      Test failed successfully.
 
 // b) Create the function that makes the test pass.
 
+// this function is called "letterCheck"
+
+function letterCheck(array, string) {
+    // "filtered" will hold an array of my results
+    let filtered = []
+    // this for loop will iterate over every element in an array
+    for (let i = 0; i < array.length; i++) {
+        // if the element (forced to be lowercase) contains the string variable it will return a number greater than 0. If it does not contain the string variable, it will return -1.
+        if (array[i].toLowerCase().indexOf(string) >= 0) {
+            // any true results will be pushed into "filtered"
+            filtered.push(array[i])
+        }
+    }
+    // returning "filtered" returns my results
+    return filtered
+}
+
+// GREEN: Test successful.
+// Let's see if I can refactor this
+
+// I keep getting errors that string ("a") is not a function. Will come back to this.
+
+// const letterCheck = (array, string) => { array.filter(string) }
 
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a “full house”. A full house is exactly one pair and one three of a kind.
 
+// I will create a function that takes an array
+// The array will have 5 numbers
+// The function will tell if it has 3 identical numbers and 2 identical numbers
+
 // a) Create a test with expect statements using the variable provided.
 
-const hand1 = [5, 5, 5, 3, 3]
-// Expected output: true
-const hand2 = [5, 5, 3, 3, 4]
-// Expected output: false
-const hand3 = [5, 5, 5, 5, 4]
-// Expected output: false
+// This function is called houseCheck
+describe("houseCheck", () => {
+    it('takes in an array of 5 numbers and determines whether or not the array is a “full house”', () => {
+        // it takes in an array of 4 numbers
+        const hand1 = [5, 5, 5, 3, 3]
+        const hand2 = [5, 5, 3, 3, 4]
+        const hand3 = [5, 5, 5, 5, 4]
+        // and returns a Boolean whether the array is a full house
+        expect(houseCheck(hand1)).toEqual(true)
+        expect(houseCheck(hand2)).toEqual(false)
+        expect(houseCheck(hand3)).toEqual(false)
+
+    })
+})
+
+// RED: ReferenceError: houseCheck is not defined
+//      Test failed successfully.
 
 
 // b) Create the function that makes the test pass.
+
+// The function houseCheck takes an array of 5 numbers.
+function houseCheck(array) {
+    // countObj will hold an object where an element in the array is a key and the value will be the number of instances the key appears in the array
+    let countObj = {}
+    // a for...of loop will go over the elements in the array
+    for (let element of array) {
+        // for each element we check if the value in already present as a key in countObj. If it is present, we increment it by 1, if not present we initialize it with 1
+        countObj[element] = (countObj[element] || 0) + 1
+    }
+
+    // Object.values(countObj) returns just the values of an object as an array
+    let vals = Object.values(countObj)
+
+    // if the array has 2 duplicates and 3 duplicates OR 
+    // if the array has 3 duplicates and 2 duplicates ...
+    if ((vals[0] === 2 && vals[1] === 3) || (vals[0] === 3 && vals[1] === 2)) {
+        // return true, OTHERWISE ...
+        return true
+    }
+    // ... return false
+    return false
+}
+
+// GREEN: Test successful.
